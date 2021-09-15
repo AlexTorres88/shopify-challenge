@@ -1,7 +1,8 @@
 <form action="/upload" method="post" enctype="multipart/form-data">
-    <p class="card-text">Choose a file to upload into the image repository</p>
-    <input type="file" name="file" value="file">
+    <h3 class="upload-title">Choose a file to upload into the image repository</h3>
+    <label>
+        <input type="file" name="file" value="file">
+    </label>
     <br>
-    <input type="submit" name="upload" value="Upload" class="btn btn-success">
+    <input class="file-submit" type="submit" name="upload" value="Upload">
 </form>
-{{msg}}

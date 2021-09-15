@@ -1,24 +1,20 @@
 {% extends 'base.html' %}
 
 {% block main %}
-
-  <h1>Shopify Challenge 2022</h1>
-
-  {% include 'upload_form.html' %}
-  <h2>Files</h2>
-  {% if files is defined %}
-    <h3>There's currently no files in the bucket</h3>
-  {% else %}
-    {% for file in files %}
-      <div>
-        <li> {{ file }} </li>
-        <form method="POST" action="/delete">
-          <input type="hidden" value="{{file}}" name="file">
-          <input type="submit" value="Delete">
-        </form>
-      </div>
-    {% endfor %}
-  {% endif %}
-
+  <h1 class="title">Shopify Challenge 2022</h1>
+  <div class="container">
+    {% include 'error_message.html' %}
+    {% include 'upload_form.html' %}
+    <div class="files-container">
+      <h2 class="title-2">Files</h2>
+      {% if not files %}
+        <h3>There's currently no files in the bucket</h3>
+      {% else %}
+          {% for file in files %}
+            {% include 'file.html' %}
+          {% endfor %}
+      {% endif %}
+    </div>
+  </div>
 {% endblock main %}
   

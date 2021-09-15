@@ -1,5 +1,4 @@
-from config import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_SESSION_TOKEN
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request
 from werkzeug.utils import redirect, secure_filename
 from config import *
 import boto3
@@ -9,12 +8,11 @@ app = Flask(__name__)
 
 # Create connection to s3 bucket
 s3_resource = boto3.resource('s3')
-BUCKET_NAME=BUCKET_NAME
 
 # Methods
 def get_files():
     files=[]
-    bucket = s3_resource.Bucket('shopify-challenge')
+    bucket = s3_resource.Bucket(BUCKET_NAME)
     for file in bucket.objects.all():
         files.append(file.key)
     return files
@@ -22,7 +20,8 @@ def get_files():
 # Routes
 @app.route('/')  
 def home():
-    return render_template("index.html", files=get_files())
+    files = get_files()
+    return render_template("index.html", files=files)
 
 @app.route('/upload',methods=['POST'])
 def upload():
