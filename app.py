@@ -1,27 +1,25 @@
 from flask import Flask, render_template, request
 from werkzeug.utils import redirect, secure_filename
 from config import *
-import boto3
+from aws_connection import s3_resource
+from methods import *
 
 # App definition
 app = Flask(__name__)
-
-# Create connection to s3 bucket
-s3_resource = boto3.resource('s3')
-
-# Methods
-def get_files():
-    files=[]
-    bucket = s3_resource.Bucket(BUCKET_NAME)
-    for file in bucket.objects.all():
-        files.append(file.key)
-    return files
 
 # Routes
 @app.route('/')  
 def home():
     files = get_files()
     return render_template("index.html", files=files)
+
+@app.route('/download',methods=['POST'])
+def download():
+    file = request.form.get("file")
+    bucket = s3_resource.Bucket(BUCKET_NAME)
+    bucket.download_file(file, file)
+
+    return redirect('/')
 
 @app.route('/upload',methods=['POST'])
 def upload():
@@ -32,7 +30,7 @@ def upload():
                 img.save(filename)
                 s3_resource.Object(BUCKET_NAME, filename).upload_file(Filename=filename)
         else:
-            return render_template('index.html', msg="No file provided", files=get_files())
+            return render_template('index.html', msg="Please select a file to upload.", files=get_files())
     
     return redirect('/')
 

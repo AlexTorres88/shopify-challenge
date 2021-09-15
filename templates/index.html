@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 
 {% block main %}
-  <h1 class="title">Shopify Challenge 2022</h1>
+  <h1 class="title">Image Repository</h1>
   <div class="container">
-    {% include 'error_message.html' %}
+    {% if msg %}
+      <p class="error-container" id="errors" onclick="closeErrors()">{{ msg }}</p>
+    {% endif %}
     {% include 'upload_form.html' %}
+    <br>
+    <br>
     <div class="files-container">
       <h2 class="title-2">Files</h2>
       {% if not files %}

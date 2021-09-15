@@ -1,7 +1,11 @@
 <div class="file-container">
   <li> {{ file }} </li>
+  <form method="POST" action="/download">
+    <input type="hidden" value="{{file}}" name="file">
+    <input id="download-button" type="image" src="../static/images/download.png" alt="Submit">
+  </form>
   <form method="POST" action="/delete">
     <input type="hidden" value="{{file}}" name="file">
-    <input type="image" src="../static/images/trash.svg" alt="Submit">
+    <input id="trash-icon" type="image" src="../static/images/trash.svg" alt="Submit">
   </form>
 </div>
