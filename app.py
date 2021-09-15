@@ -7,6 +7,8 @@ from methods import *
 # App definition
 app = Flask(__name__)
 
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 # Routes
 @app.route('/')  
 def home():
@@ -24,8 +26,9 @@ def download():
 @app.route('/upload',methods=['POST'])
 def upload():
     if request.method == 'POST':
-        img = request.files['file']
-        if img:
+        imgs = request.files.getlist('file')
+        if imgs[0].filename != '':
+            for img in imgs:
                 filename = secure_filename(img.filename)
                 img.save(filename)
                 s3_resource.Object(BUCKET_NAME, filename).upload_file(Filename=filename)
