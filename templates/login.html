@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <div class="container-f">
+        <h2 class="text-center">Login</h2>
+        <form class="form-container" method="POST" action="/login">
+            <div>
+                <input type="email" name="email" placeholder="Email" autofocus="">
+            </div>
+
+            <div>
+                <input type="password" name="password" placeholder="Password">
+            </div>
+            <div class="checkbox">
+                <label for="checkbox">Remember me</label>
+                <input name="checkbox" type="checkbox"> 
+            </div>
+            <div>
+                <button class="form-button">Login</button>
+            </div>
+        </form>
+    </div>
+
+    <div style="margin-top: 3%;">
+        <h3>Not a user? <a href= "{{ url_for('auth.signup') }}" >Sign up here</a></h3>
+    </div>
+
+{% endblock %}

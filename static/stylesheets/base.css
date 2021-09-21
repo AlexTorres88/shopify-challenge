@@ -112,3 +112,41 @@ input[type="file" i] {
     padding: 20px;
     padding-left: 70px;
 }
+
+/* Form */
+
+.container-f input {
+    width: 60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.container-f {
+    margin-top: 5%;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.form-button {
+    padding: 10px 20px;
+    background-color: #008060;
+    color: white;
+    border-radius: 10px;
+}
+
+.checkbox {
+    display: grid;
+    place-items: center;
+}
+
+@media only screen and (min-width: 1000px) {
+    .container-f input {
+        width: 30%;
+    }
+}
