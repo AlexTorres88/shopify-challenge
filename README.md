@@ -1,6 +1,10 @@
 # shopify-challenge
 An image repository done for the Shopify 2022 Challenge. This was for the backend summer intern position but I added a small frontend so anyone could easily test it. 
 
+# How does it work
+
+Basically, when a user registers in the webapp and then logs in, the application creates a bucket for them on the AWS S3 and then each user can upload, download or delete from their personal bucket. 
+
 # Setup
 
 For this setup, you will need an AWS account and a user that is not the root user of your AWS organization.
