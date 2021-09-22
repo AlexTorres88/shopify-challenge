@@ -1,5 +1,5 @@
 # shopify-challenge
-An image repository done for the Shopify 2022 Challenge
+An image repository done for the Shopify 2022 Challenge. This was for the backend summer intern position but I added a small frontend so anyone could easily test it. 
 
 # Setup
 
