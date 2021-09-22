@@ -5,6 +5,8 @@ An image repository done for the Shopify 2022 Challenge
 
 For this setup, you will need an AWS account, a user that is not the root user of your organization and have a bucket created.
 
+You will also need a PostgreSQL db and you'll need to create the schema that's available at schema.txt (I know this may not be the best practice but since it's just a personal project I decided to leave it like that).  
+
 After that you will need to create a virtual environment:
 
 `````
