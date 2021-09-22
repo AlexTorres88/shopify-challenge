@@ -13,7 +13,7 @@ The connection may look like this:
 
 `````
 SQLALCHEMY_DATABASE_URI="postgresql://[server_user]@[server_name]:[password]@[host]/[db_name]"
-''''
+
 
 After that you will need to create a virtual environment:
 
